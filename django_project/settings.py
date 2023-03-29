@@ -38,10 +38,21 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    # 3rd-party apps
+    "rest_framework", # new
+
     # Local
     "accounts.apps.AccountsConfig", # new
     "posts.apps.PostsConfig", # new
 ]
+
+
+REST_FRAMEWORK = { # new
+    "DEFAULT_PERMISSION_CLASSES": [
+        "rest_framework.permissions.AllowAny",
+    ],
+}
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -128,3 +139,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 AUTH_USER_MODEL = "accounts.CustomUser"  # new
+
+
+
