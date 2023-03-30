@@ -37,10 +37,17 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    "django.contrib.sites", # new
 
     # 3rd-party apps
     "rest_framework", # new
     "corsheaders", # new
+    "rest_framework.authtoken", # new
+    "allauth", # new
+    "allauth.account", # new
+    "allauth.socialaccount", # new
+    "dj_rest_auth", # new
+    "dj_rest_auth.registration", # new
 
     # Local
     "accounts.apps.AccountsConfig", # new
@@ -51,6 +58,10 @@ INSTALLED_APPS = [
 REST_FRAMEWORK = { # new
     "DEFAULT_PERMISSION_CLASSES": [
         "rest_framework.permissions.IsAuthenticated", # new
+    ],
+    "DEFAULT_AUTHENTICATION_CLASSES": [ # new
+        "rest_framework.authentication.SessionAuthentication",
+        "rest_framework.authentication.TokenAuthentication", # new
     ],
 }
 
@@ -79,10 +90,18 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                "django.template.context_processors.request", # new
             ],
         },
     },
 ]
+
+
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend" # new
+
+SITE_ID = 1 # new
+
+
 
 WSGI_APPLICATION = 'django_project.wsgi.application'
 
